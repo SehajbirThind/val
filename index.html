@@ -157,6 +157,7 @@
       from { transform: scale(.96); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+    
   </style>
 </head>
 
@@ -332,6 +333,17 @@
     });
 
     noBtn.addEventListener("click", e => e.preventDefault());
+
+    noBtn.addEventListener("pointerdown", e => {
+  e.preventDefault();
+  moveNo(e.clientX, e.clientY);
+});
+
+noBtn.addEventListener("touchstart", e => {
+  e.preventDefault();
+  const t = e.touches[0];
+  moveNo(t.clientX, t.clientY);
+}, { passive: false });
 
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
